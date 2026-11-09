@@ -187,11 +187,11 @@ table.tbl{width:100%;border-collapse:collapse;min-width:740px}
 .banner.wait{background:var(--g-bg);color:var(--g-ink)}
 .fgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px;margin-top:14px;align-items:start}
 .col{display:flex;flex-direction:column;gap:14px;min-width:0}
-@container (max-width: 1120px){ .fgrid{grid-template-columns:minmax(0,1fr)} .col{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start} }
+@container (max-width: 1280px){ .fgrid{grid-template-columns:minmax(0,1fr)} .col{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));align-items:start} }
 .chead{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line2);flex-wrap:wrap}
 .chead b{font-size:15.5px;color:var(--head)}
 .chead .t{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:var(--head)}
-table.docs{min-width:500px}
+table.docs{min-width:560px}
 .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 12px;padding:12px 14px 14px}
 .fld label{display:block;font-size:12.5px;font-weight:500;margin-bottom:4px;color:var(--ink)}
 .fld .inp{width:100%}
@@ -199,7 +199,8 @@ table.docs{min-width:500px}
 .fbtn{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 9px;border:1px solid #c9d0da;border-radius:6px;font-size:12.5px;background:var(--white);white-space:nowrap}
 .fbtn:hover{border-color:var(--blue);color:var(--b-ink)}
 .acard{margin-bottom:14px;overflow:hidden}
-.acard table.tbl{min-width:640px}
+.acard table.tbl{min-width:0}
+table.tbl.msgs{min-width:620px}
 .sbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .sbox .card{padding:14px 16px}
 .sbox h3{font-size:15.5px;color:var(--head);margin-bottom:8px}
@@ -213,6 +214,56 @@ table.docs{min-width:500px}
 .prow{display:flex;align-items:center;gap:12px;padding:12px 14px;flex-wrap:wrap}
 .prow .grow{flex:1 1 180px;min-width:0}
 .empty-state{padding:30px 16px;text-align:center;color:var(--muted)}
+.cfoot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 14px 14px}
+.cfoot .ferr{flex:1 1 100%;margin:0 0 2px}
+.dstate{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted);min-height:20px}
+.dstate.dirty{color:var(--o-ink);font-weight:600}
+.dstate.ok{color:var(--gr-ink);font-weight:600}
+.card.is-dirty{border-color:#efc58f;box-shadow:0 0 0 3px rgba(178,93,6,.1)}
+.inp.bad{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(196,30,58,.14)!important}
+.vcell{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.expc{display:inline-flex;align-items:center;gap:2px;white-space:nowrap}
+.ebtn{width:26px;height:26px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted);flex:none}
+.ebtn:hover{background:var(--b-bg);color:var(--b-ink)}
+.alt-acts{display:flex;gap:6px;flex-wrap:wrap}
+.uinfo{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-bottom:12px;line-height:1.45}
+.tiles.one{grid-template-columns:minmax(0,1fr)}
+@container (max-width: 1000px){ .tbl.emps .c-id{display:none} table.tbl.emps{min-width:600px} }
+@container (max-width: 660px){
+  table.tbl.emps,table.tbl.docs{min-width:0}
+  .tbl.emps thead,.tbl.docs thead{display:none}
+  .tbl.emps tbody,.tbl.docs tbody{display:block}
+  .tbl.emps tbody tr,.tbl.docs tbody tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line2)}
+  .tbl.emps tbody td,.tbl.docs tbody td{display:block;padding:0;border:0;min-width:0}
+  .tbl.emps td.go{display:none}
+  .tbl.emps .c-name{grid-area:1/1}
+  .tbl.emps .c-st{grid-area:1/2;justify-self:end;text-align:left}
+  .tbl.emps .c-role{grid-area:2/1;font-size:13px;color:var(--muted)}
+  .tbl.emps .c-prog{grid-area:2/2}
+  .tbl.emps .c-exp{grid-area:3/1;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+  .tbl.emps .c-exp::before{content:'תוקף קרוב';font-size:12px;color:var(--muted)}
+  .tbl.emps .c-exp.none{display:none}
+  .tbl.emps .c-act{grid-area:3/2;text-align:left}
+  .tbl.emps tr.empty{display:block}
+  .tbl.emps tr.empty td{padding:22px 8px}
+  .tbl.docs .d-name{grid-area:1/1}
+  .tbl.docs .d-st{grid-area:1/2;justify-self:end}
+  .tbl.docs .d-val{grid-area:2/1}
+  .tbl.docs .d-exp{grid-area:2/2;justify-self:end;display:flex;align-items:center;gap:4px}
+  .tbl.docs .d-exp::before{content:'תוקף';font-size:12px;color:var(--muted)}
+  .tbl.docs .d-exp.none{display:none}
+  table.tbl.stack{min-width:0}
+  .tbl.stack thead{display:none}
+  .tbl.stack tbody{display:block}
+  .tbl.stack tbody tr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:12px 14px;border-bottom:1px solid var(--line2)}
+  .tbl.stack tbody td{display:block;padding:0;border:0;min-width:0}
+  .tbl.stack tbody td:first-child{flex:1 1 100%}
+  .tbl.stack tbody td:empty{display:none}
+  .tbl.msgs tbody td:nth-child(2){order:-1;flex:1 1 100%;font-weight:600}
+  .tbl.msgs tbody td:first-child{flex:0 1 auto}
+}
+.dlg .tile{height:170px}
+.dlg .tile img{object-fit:contain;background:#eef1f5}
 
 /* ---------- modal ---------- */
 .ovl{position:fixed;inset:0;background:var(--scrim);display:flex;align-items:center;justify-content:center;padding:16px;z-index:100;animation:fade .18s ease}
@@ -542,7 +593,7 @@ function endOfYear(){const y=new Date().getFullYear();const e=new Date(y,11,31);
 const ITEMS={
  personal:{t:'פרטים אישיים',sub:'מילוי פרטים',type:'form',icon:'user'},
  idcard:{t:'צילום תעודת זהות + ספח',sub:'העלאת צילום',type:'upload2',icon:'camera'},
- f101:{t:'טופס 101',short:'טופס 101',sub:'טופס לחתימה',type:'sign',icon:'file',exp:'eoy'},
+ f101:{t:'טופס 101',short:'טופס 101',sub:'העלאת הטופס החתום',type:'upload1',icon:'upload',exp:'eoy',pdf:true},
  interview:{t:'טופס ראיון אישי',sub:'טופס לחתימה',type:'sign',icon:'file'},
  contract:{t:'חוזה עבודה אישי',sub:'טופס לחתימה',type:'sign',icon:'pen'},
  notice:{t:'הודעה לעובד על תנאי העבודה',sub:'טופס לחתימה',type:'sign',icon:'file'},
@@ -551,8 +602,10 @@ const ITEMS={
  union:{t:'טופס הצטרפות להסתדרות',sub:'טופס לחתימה · לא חובה',type:'sign',icon:'file',optional:true},
  weapon:{t:'רישיון נשק',short:'רישיון נשק',sub:'צילום + תאריך תוקף',type:'upload1',icon:'badge',expInput:true},
  refresher:{t:'אישור ריענון',short:'ריענון',sub:'צילום + תאריך תוקף',type:'upload1',icon:'badge',expInput:true},
- bank:{t:'אישור ניהול חשבון בנק',sub:'העלאת צילום',type:'upload1',icon:'upload'}
+ bank:{t:'אישור ניהול חשבון בנק',sub:'העלאת צילום או קובץ',type:'upload1',icon:'upload',pdf:true}
 };
+const TYPE_LBL={form:'מילוי',upload1:'העלאה',upload2:'העלאה',sign:'חתימה דיגיטלית'};
+const HEALTH=['כללית','רישיון נשק (משרד הביטחון)','לא נדרשת'];
 const TRACKS={
  guard:{t:'מלא — מאבטח',items:['personal','idcard','f101','interview','contract','notice','health','consent','union','weapon','refresher','bank']},
  basic:{t:'בסיסי — ניקיון',items:['personal','idcard','f101','contract','notice','bank']},
@@ -583,7 +636,7 @@ function initState(){
   S={view:'employees',fileId:null,filters:{q:'',role:'',status:'',exp:'',missing:false},emps:[],msgs:[],renewals:{},
      phone:{empId:null,screen:'idle',step:null,thread:[],notif:null,draft:{},files:{}},
      savedSig:null,tasks:{create:false,fill:false,live:false,approve:false,alerts:false},tab:'office',badge:{office:0,phone:0},
-     flashId:null,created:0,resetArm:false};
+     flashId:null,created:0,resetArm:false,up:null,pendingNav:null,justSaved:null};
   SEED.forEach((r,i)=>S.emps.push(makeSeed(r,i)));
   const m=(ago,to,kind,ch,st)=>S.msgs.push({at:Date.now()-ago,to,kind,ch,st});
   m(HOUR,'סאמר עלי','תזכורת להשלמת קליטה','WhatsApp','נקרא');
@@ -607,12 +660,13 @@ function makeSeed(r,i){
   const base={f101:140,health:300,weapon:200,refresher:180};
   keys.forEach(k=>{if(base[k]!=null&&items[k].st!=='pending'&&items[k].st!=='skipped') items[k].exp=addDays(base[k]);});
   if(expKey&&items[expKey]) items[expKey].exp=addDays(expOff);
+  if(items.f101&&items.f101.exp) items.f101.exp=endOfYear();
   const parts=name.split(' ');
   const birth=new Date(1978+(i*3)%20,(i*5)%12,1+(i*7)%27);
   return {id:'e'+i,name,phone,idno,role,track,items,onboarded:st==='in',assigned,site:assigned?SITES[i%SITES.length]:'',
     activity:Date.now()-actAgo,linkSent:Date.now()-actAgo-DAY,opened:true,isNew:false,
     personal:{first:parts[0],last:parts.slice(1).join(' '),idno,birth:iso(birth),address:ADDR[i%ADDR.length]},
-    terms:{role:role,start:fmtD(st==='in'?addDays(-(40+i*9)):addDays(4+i)),days:role==='ניקיון'?'6':'5',health:track==='guard'?'רישיון נשק (משרד הביטחון)':'כללית'}};
+    terms:{role:role,start:iso(st==='in'?addDays(-(40+i*9)):addDays(4+i)),days:role==='ניקיון'?'6':'5',health:track==='guard'?'רישיון נשק (משרד הביטחון)':'כללית'}};
 }
 const emp=id=>S.emps.find(e=>e.id===id);
 const keysOf=e=>TRACKS[e.track].items;
@@ -667,11 +721,20 @@ function sampleImg(kind){
     x.fillStyle='#d8dee7';x.fillRect(0,0,520,330);
     x.save();x.translate(260,165);x.rotate(0.02);x.translate(-180,-145);
     x.fillStyle='#ffffff';rr(x,0,0,360,290,8);x.fill();
-    const title={bank:'אישור ניהול חשבון',weapon:'רישיון נשק',refresher:'אישור ריענון'}[kind]||'מסמך';
-    x.fillStyle='#0b1d3a';x.font='800 23px Heebo, Arial';x.fillText(title,334,46);
+    const I=ITEMS[kind],form=kind==='f101'||(I&&I.type==='sign');
+    const title={bank:'אישור ניהול חשבון',weapon:'רישיון נשק',refresher:'אישור ריענון',f101:'טופס 101 · כרטיס עובד'}[kind]||(I?(I.short||I.t):'מסמך');
+    x.fillStyle='#0b1d3a';x.font='800 '+(title.length>20?18:22)+'px Heebo, Arial';x.fillText(title,334,46);
     x.font='500 13px Heebo, Arial';x.fillStyle='#b25d06';x.fillText('דוגמה בלבד',334,68);
-    for(let i=0;i<7;i++) bar(26,90+i*24,308-(i%3)*52,9,'#d5dbe4');
-    x.strokeStyle=kind==='bank'?'#2a62c9':'#157a3d';x.lineWidth=3;x.beginPath();x.arc(84,238,32,0,Math.PI*2);x.stroke();x.beginPath();x.arc(84,238,23,0,Math.PI*2);x.stroke();
+    if(form){
+      x.strokeStyle='#c9d0da';x.lineWidth=1.5;
+      for(let r=0;r<4;r++) for(let c=0;c<2;c++){const X=26+c*158,Y=84+r*34;rr(x,X,Y,150,24,4);x.stroke();bar(X+70,Y+8,70-((r+c)%3)*16,8,'#c3cbd7');bar(X+10,Y+9,44-((r*2+c)%3)*10,6,'#e3e7ee');}
+      x.strokeStyle='#9aa6b8';x.lineWidth=1.2;x.beginPath();x.moveTo(30,266);x.lineTo(176,266);x.stroke();
+      x.strokeStyle='#1f4c90';x.lineWidth=2.6;x.lineCap='round';x.beginPath();x.moveTo(44,256);x.bezierCurveTo(62,222,80,270,100,244);x.bezierCurveTo(114,226,128,264,160,248);x.stroke();
+      x.font='500 12px Heebo, Arial';x.fillStyle='#566275';x.fillText('חתימת העובד/ת',334,270);
+    } else {
+      for(let i=0;i<7;i++) bar(26,90+i*24,308-(i%3)*52,9,'#d5dbe4');
+      x.strokeStyle=kind==='bank'?'#2a62c9':'#157a3d';x.lineWidth=3;x.beginPath();x.arc(84,238,32,0,Math.PI*2);x.stroke();x.beginPath();x.arc(84,238,23,0,Math.PI*2);x.stroke();
+    }
     x.restore();
   }
   return cache['i'+kind]=c.toDataURL('image/jpeg',.86);
@@ -688,14 +751,25 @@ function sampleSig(seed){
   return cache['s'+seed]=c.toDataURL('image/png');
 }
 const defaultImgs=k=>k==='idcard'?[sampleImg('front'),sampleImg('back')]:[sampleImg(k==='bank'?'bank':k)];
+function pdfThumb(name){
+  const c=document.createElement('canvas');c.width=520;c.height=330;const x=c.getContext('2d');
+  x.fillStyle='#eef1f5';x.fillRect(0,0,520,330);
+  x.fillStyle='#ffffff';rr(x,206,34,108,140,10);x.fill();x.strokeStyle='#c9d0da';x.lineWidth=2;x.stroke();
+  x.fillStyle='#e3e7ee';for(let i=0;i<4;i++){rr(x,222,56+i*15,76-(i%2)*22,7,3);x.fill();}
+  x.fillStyle='#c41e3a';rr(x,222,126,76,32,6);x.fill();
+  x.fillStyle='#ffffff';x.font='800 18px Heebo, Arial';x.textAlign='center';x.fillText('PDF',260,148);
+  let n=String(name||'קובץ.pdf');if(n.length>34) n=n.slice(0,31)+'…';
+  x.direction=/[֐-׿]/.test(n)?'rtl':'ltr';x.fillStyle='#17202e';x.font='600 17px Heebo, Arial';x.fillText(n,260,214);
+  x.direction='rtl';x.fillStyle='#566275';x.font='500 14px Heebo, Arial';x.fillText('קובץ PDF',260,242);
+  return c.toDataURL('image/png');
+}
 function shrink(dataUrl,cb){const img=new Image();img.onload=()=>{const m=1000,s=Math.min(1,m/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.85));};img.onerror=()=>cb(null);img.src=dataUrl}
 
 // ---------- documents ----------
 function docHTML(k,e,sig,at){
-  const p=e.personal,t=e.terms,y=new Date().getFullYear();
-  const F={name:(p.first+' '+p.last).trim()||e.name,id:p.idno||e.idno||'—',role:t.role||e.role,start:t.start||'—',days:t.days||'—',birth:p.birth?isoToD(p.birth):'—',addr:p.address||'—'};
+  const p=e.personal,t=e.terms;
+  const F={name:(p.first+' '+p.last).trim()||e.name,id:p.idno||e.idno||'—',role:t.role||e.role,start:t.start?isoToD(t.start):'—',days:t.days||'—',birth:p.birth?isoToD(p.birth):'—',addr:p.address||'—'};
   const D={
-    f101:['טופס 101 · שנת המס '+y,[['שם מלא',F.name],['ת.ז',F.id,1],['תאריך לידה',F.birth,1],['כתובת',F.addr],['תחילת עבודה',F.start,1]],'אני מצהיר/ה שהפרטים בטופס מלאים ונכונים.'],
     interview:['טופס ראיון אישי',[['שם מלא',F.name],['תפקיד',F.role],['תאריך',fmtD(new Date()),1]],'הפרטים נמסרו בראיון עם נציג החברה.'],
     contract:['חוזה עבודה אישי',[['העובד/ת',F.name],['ת.ז',F.id,1],['תפקיד',F.role],['תחילת עבודה',F.start,1],['ימי עבודה בשבוע',F.days]],'קראתי את תנאי החוזה ואני מסכים/ה להם.'],
     notice:['הודעה לעובד על תנאי העבודה',[['העובד/ת',F.name],['תפקיד',F.role],['ימי עבודה בשבוע',F.days],['תחילת עבודה',F.start,1]],'קיבלתי את פירוט תנאי העבודה שלי.'],
@@ -730,6 +804,7 @@ function renderMain(keepScroll){
 }
 function refreshOffice(){
   if(S.view==='employees'){const k=$('#kpis'),tb=$('#tbody');if(k) k.innerHTML=kpisHTML();if(tb) tb.innerHTML=rowsHTML();renderSide();}
+  else if(S.view==='file') refreshFile();
   else renderMain(true);
   if(S.view==='file'&&S.fileId===S.phone.empId){const e=emp(S.fileId);if(e&&progress(e).done>0) doneTask('live');}
 }
@@ -739,7 +814,7 @@ function openFile(id){S.fileId=id;S.view='file';renderMain(false);const e=emp(id
 // ---------- office: employees ----------
 function kpisHTML(){
   const c=k=>S.emps.filter(e=>status(e).k===k).length;
-  const k=[['בתהליך מילוי',c('prog')+c('sent'),''],['ממתינים לבדיקה',c('review'),''],['נקלטו',c('in'),''],['מסמכים שפג תוקפם',expiredDocs().length,'color:var(--red)'],['פג תוקף ב-30 יום',soonDocs().length,'color:var(--o-ink)']];
+  const k=[['בתהליך מילוי',c('prog')+c('sent')+c('new'),''],['ממתינים לבדיקה',c('review'),''],['נקלטו',c('in'),''],['מסמכים שפג תוקפם',expiredDocs().length,'color:var(--red)'],['פג תוקף ב-30 יום',soonDocs().length,'color:var(--o-ink)']];
   return k.map(x=>'<div class="card kpi"><div class="lb">'+x[0]+'</div><div class="nm" style="'+x[2]+'">'+x[1]+'</div></div>').join('');
 }
 function filtered(){
@@ -748,7 +823,7 @@ function filtered(){
     if(q&&!(e.name.indexOf(q)>=0||(qd&&((e.idno||'').indexOf(qd)>=0||e.phone.replace(/\D/g,'').indexOf(qd)>=0)))) return false;
     if(f.role&&e.role!==f.role) return false;
     const s=status(e).k;
-    if(f.status&&!(s===f.status||(f.status==='prog'&&s==='sent'))) return false;
+    if(f.status&&!(s===f.status||(f.status==='prog'&&(s==='sent'||s==='new')))) return false;
     if(f.exp){const x=nearestExp(e);if(!x) return false;const n=daysTo(x.d);if(f.exp==='expired'&&n>=0) return false;if(f.exp==='soon'&&(n<0||n>30)) return false;}
     if(f.missing&&(e.onboarded||progress(e).done===progress(e).total)) return false;
     return true;
@@ -760,13 +835,13 @@ function rowsHTML(){
   return list.map(e=>{
     const st=status(e),pr=progress(e),ex=nearestExp(e);
     return '<tr data-act="open" data-id="'+e.id+'" tabindex="0" class="'+(S.flashId===e.id?'flash':'')+'">'+
-      '<td><div class="nm1">'+esc(e.name)+(e.isNew?'<span class="new-tag">חדש</span>':'')+'</div><div class="nm2">'+L(e.phone)+'</div></td>'+
-      '<td>'+(e.personal.idno?L(e.personal.idno):'<span class="nm2">—</span>')+'</td>'+
-      '<td>'+esc(e.role)+'</td>'+
-      '<td>'+chip(st)+(hasRejected(e)?'<div class="nm2 red">נדרש תיקון</div>':'')+'</td>'+
-      '<td><div class="bar"><div class="tk"><div class="fl'+(pr.done===pr.total?' full':'')+'" style="width:'+pr.pct+'%"></div></div><div class="tx">'+L(pr.done+'/'+pr.total)+'</div></div></td>'+
-      '<td>'+(ex?'<div class="'+expCls(ex.d)+'">'+L(fmtD(ex.d))+'</div><div class="nm2">'+esc(short(ex.k))+'</div>':'<span class="nm2">—</span>')+'</td>'+
-      '<td class="nm2">'+esc(e.linkSent&&!e.opened?'טרם נכנס/ה':ago(e.activity))+'</td>'+
+      '<td class="c-name"><div class="nm1">'+esc(e.name)+(e.isNew?'<span class="new-tag">חדש</span>':'')+'</div><div class="nm2">'+L(e.phone)+'</div></td>'+
+      '<td class="c-id">'+(e.personal.idno?L(e.personal.idno):'<span class="nm2">—</span>')+'</td>'+
+      '<td class="c-role">'+esc(e.role)+'</td>'+
+      '<td class="c-st">'+chip(st)+(hasRejected(e)?'<div class="nm2 red">נדרש תיקון</div>':'')+'</td>'+
+      '<td class="c-prog"><div class="bar"><div class="tk"><div class="fl'+(pr.done===pr.total?' full':'')+'" style="width:'+pr.pct+'%"></div></div><div class="tx">'+L(pr.done+'/'+pr.total)+'</div></div></td>'+
+      '<td class="c-exp'+(ex?'':' none')+'">'+(ex?'<div class="'+expCls(ex.d)+'">'+L(fmtD(ex.d))+'</div><div class="nm2">'+esc(short(ex.k))+'</div>':'<span class="nm2">—</span>')+'</td>'+
+      '<td class="nm2 c-act">'+esc(e.linkSent&&!e.opened?'טרם נכנס/ה':ago(e.activity))+'</td>'+
       '<td class="go">'+ic('chevL',16)+'</td></tr>';
   }).join('');
 }
@@ -782,51 +857,109 @@ function viewEmployees(){
       '<select id="f-status" class="inp" aria-label="סינון לפי סטטוס">'+opt('','כל הסטטוסים',f.status)+opt('prog','בתהליך מילוי',f.status)+opt('review','ממתין לבדיקה',f.status)+opt('in','נקלט',f.status)+'</select>'+
       '<select id="f-exp" class="inp" aria-label="סינון לפי תוקף">'+opt('','כל התוקפים',f.exp)+opt('expired','פג תוקף',f.exp)+opt('soon','פג תוקף ב-30 יום',f.exp)+'</select>'+
       '<label class="chk"><input type="checkbox" id="f-missing"'+(f.missing?' checked':'')+'>חסרים מסמכים</label>'+
-    '</div><div class="tscroll"><table class="tbl"><thead><tr><th>שם</th><th>ת.ז</th><th>תפקיד</th><th>סטטוס</th><th>התקדמות</th><th>תוקף קרוב</th><th>פעילות אחרונה</th><th><span class="vh">פתיחה</span></th></tr></thead><tbody id="tbody">'+rowsHTML()+'</tbody></table></div></div>';
+    '</div><div class="tscroll"><table class="tbl emps"><thead><tr><th>שם</th><th class="c-id">ת.ז</th><th>תפקיד</th><th>סטטוס</th><th>התקדמות</th><th>תוקף קרוב</th><th>פעילות אחרונה</th><th><span class="vh">פתיחה</span></th></tr></thead><tbody id="tbody">'+rowsHTML()+'</tbody></table></div></div>';
 }
 
 // ---------- office: employee file ----------
-const fld=(id,label,val,isLtr)=>'<div class="fld"><label for="'+id+'">'+label+'</label><input id="'+id+'" class="inp" value="'+esc(val||'')+'"'+(isLtr?' dir="ltr" style="text-align:right"':'')+'></div>';
+function fld(id,label,val,o){
+  o=o||{};val=val==null?'':String(val);
+  const ltr=o.ltr?' dir="ltr" style="text-align:right"':'';
+  let ctl;
+  if(o.options){
+    const opts=o.options.slice();if(!opts.some(op=>String(op[0])===val)) opts.unshift([val,val||'—']);
+    ctl='<select id="'+id+'" class="inp" data-orig="'+esc(val)+'">'+opts.map(op=>'<option value="'+esc(op[0])+'"'+(String(op[0])===val?' selected':'')+'>'+esc(op[1])+'</option>').join('')+'</select>';
+  } else ctl='<input id="'+id+'" class="inp" type="'+(o.type||'text')+'" value="'+esc(val)+'" data-orig="'+esc(val)+'"'+ltr+(o.attrs?' '+o.attrs:'')+'>';
+  return '<div class="fld"><label for="'+id+'">'+label+'</label>'+ctl+(o.extra||'')+'</div>';
+}
 function docRow(e,k){
   const it=e.items[k],I=ITEMS[k];
   const sc={pending:['ממתין','c-g'],submitted:['הוגש','c-b'],approved:['אושר','c-gr'],rejected:['נשלח לתיקון','c-r'],skipped:['לא נבחר','c-g']}[it.st];
-  const can=it.st==='submitted'||it.st==='approved';
-  const lbl=I.type==='sign'?[ 'pen','טופס חתום']:(I.type==='form'?['user','פרטים']:['camera',I.type==='upload2'?'2 צילומים':'צילום']);
-  const val=can?'<button class="fbtn" data-act="view" data-id="'+e.id+'" data-k="'+k+'">'+ic(lbl[0],13)+lbl[1]+'</button>':(it.st==='rejected'?'<span class="nm2 red">'+esc(it.note||'')+'</span>':'<span class="nm2">—</span>');
-  return '<tr'+(can?' data-act="view" data-id="'+e.id+'" data-k="'+k+'" tabindex="0"':'')+'><td><div class="nm1 sm">'+esc(I.t)+'</div><div class="nm2">'+esc(I.sub)+'</div></td><td><span class="chip '+sc[1]+'"><span>'+sc[0]+'</span><i></i></span></td><td>'+val+'</td><td>'+(it.exp?'<span class="'+expCls(it.exp)+'">'+L(fmtD(it.exp))+'</span>':'<span class="nm2">—</span>')+'</td></tr>';
+  const can=it.st==='submitted'||it.st==='approved',scan=I.type==='sign'&&!!it.img;
+  const lbl=I.type==='form'?['user','פרטים']:(I.type==='sign'&&!scan?['pen','טופס חתום']:(I.type==='upload2'?['camera','2 צילומים']:(I.pdf||scan?['file','קובץ']:['camera','צילום'])));
+  let val;
+  if(can) val='<button class="fbtn" data-act="view" data-id="'+e.id+'" data-k="'+k+'">'+ic(lbl[0],13)+lbl[1]+'</button>';
+  else if(it.st==='skipped') val='<span class="nm2">—</span>';
+  else val='<div class="vcell">'+(it.st==='rejected'&&it.note?'<span class="nm2 red">'+esc(it.note)+'</span>':'')+
+    (I.type==='form'?'<button class="fbtn" data-act="edit-personal">'+ic('pen',13)+'מילוי מהמשרד</button>':'<button class="fbtn" data-act="upload" data-id="'+e.id+'" data-k="'+k+'">'+ic('upload',13)+'העלאה מהמשרד</button>')+'</div>';
+  const ex=it.exp?'<span class="expc"><span class="'+expCls(it.exp)+'">'+L(fmtD(it.exp))+'</span><button class="ebtn" data-act="exp-edit" data-id="'+e.id+'" data-k="'+k+'" title="עדכון תאריך תוקף" aria-label="עדכון תאריך התוקף של '+esc(short(k))+'">'+ic('pen',13)+'</button></span>':'<span class="nm2">—</span>';
+  return '<tr'+(can?' data-act="view" data-id="'+e.id+'" data-k="'+k+'" tabindex="0"':'')+'><td class="d-name"><div class="nm1 sm">'+esc(I.t)+'</div><div class="nm2">'+esc(can&&it.by==='office'?(I.type==='form'?'מולא מהמשרד':'הועלה מהמשרד'):I.sub)+'</div></td><td class="d-st"><span class="chip '+sc[1]+'"><span>'+sc[0]+'</span><i></i></span></td><td class="d-val">'+val+'</td><td class="d-exp'+(it.exp?'':' none')+'">'+ex+'</td></tr>';
 }
-function viewFile(){
-  const e=emp(S.fileId),st=status(e),pr=progress(e),keys=keysOf(e);
-  const nA=keys.filter(k=>e.items[k].st==='approved').length,nS=keys.filter(k=>e.items[k].st==='submitted').length,nR=keys.filter(k=>!ITEMS[k].optional).length;
+function fileHeadHTML(e){
+  const st=status(e),pr=progress(e);
   const C=2*Math.PI*21,off=C*(1-pr.done/pr.total);
-  const canApprove=st.k==='review',canRemind=st.k==='prog'||st.k==='sent';
   let banner='';
-  if(st.k==='in') banner='<div class="banner ok">'+ic('check',16)+'הקליטה אושרה. '+esc(firstName(e))+' מופיע/ה עכשיו בעובדים הפעילים.</div>';
-  else if(st.k==='review') banner='<div class="banner info">'+ic('bell',16)+'כל הפריטים הוגשו מהטלפון. אפשר לעבור עליהם ולאשר את הקליטה.</div>';
+  if(st.k==='in') banner='<div class="banner ok">'+ic('check',16)+'הקליטה אושרה. '+esc(firstName(e))+' מופיע/ה עכשיו בעובדים הפעילים'+(e.assigned&&e.site?' · משובץ/ת ב'+esc(e.site):'')+'.</div>';
+  else if(st.k==='review') banner='<div class="banner info">'+ic('bell',16)+'כל הפריטים התקבלו. אפשר לעבור עליהם ולאשר את הקליטה.</div>';
   else if(st.k==='sent') banner='<div class="banner wait">'+ic('send',16)+'הקישור נשלח. ברגע שהעובד ימלא פריט, הוא יופיע כאן.</div>';
-  return '<button class="crumb" data-act="go" data-v="employees">'+ic('arR',14)+'עובדים</button>'+
-    '<div class="card fhead"><div class="who"><div class="av">'+esc(initials(e.name))+'</div><div><h2>'+esc(e.name)+'</h2>'+
+  else if(st.k==='new') banner='<div class="banner wait">'+ic('send',16)+'עוד לא נשלח קישור קליטה. אפשר לשלוח אותו עכשיו, או למלא ולהעלות פריטים מהמשרד.</div>';
+  const sendBtn=st.k==='new'?'<button class="btn pr" data-act="send-link" data-id="'+e.id+'">'+ic('send',15)+'שליחת קישור קליטה</button>'
+    :'<button class="btn pr" data-act="remind" data-id="'+e.id+'"'+(st.k==='prog'||st.k==='sent'?'':' disabled')+'>'+ic('send',15)+'שליחת תזכורת</button>';
+  return '<div class="card fhead"><div class="who"><div class="av">'+esc(initials(e.name))+'</div><div><h2>'+esc(e.name)+'</h2>'+
       '<div class="meta">'+chip(st)+'<span>'+esc(e.role)+'</span><span aria-hidden="true">·</span>'+L(e.phone)+'<span aria-hidden="true">·</span><span>WhatsApp</span>'+(e.personal.idno?'<span aria-hidden="true">·</span><span>ת.ז '+L(e.personal.idno)+'</span>':'')+'</div></div></div>'+
       '<div class="fact"><div class="ring" title="התקדמות"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="21" stroke="#e5ebf3" stroke-width="5" fill="none"/><circle cx="27" cy="27" r="21" stroke="'+(pr.done===pr.total?'#157a3d':'#3b78e0')+'" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'"/></svg><div class="rt">'+L(pr.done+'/'+pr.total)+'</div></div>'+
-      '<button class="btn pr" data-act="remind" data-id="'+e.id+'"'+(canRemind?'':' disabled')+'>'+ic('send',15)+'שליחת תזכורת</button>'+
-      '<button class="btn gr" data-act="approve" data-id="'+e.id+'" id="btnApprove"'+(canApprove?'':' disabled')+'>'+ic('check',15)+'אישור קליטה</button></div></div>'+
-    banner+
-    '<div class="fgrid"><div class="card"><div class="chead"><b>מסמכים וטפסים</b><span class="nm2">'+nA+' אושרו · '+nS+' הוגשו · '+nR+' חובה</span></div>'+
-      '<div class="tscroll"><table class="tbl docs"><thead><tr><th>פריט</th><th>סטטוס</th><th>קובץ / ערך</th><th>תוקף</th></tr></thead><tbody>'+keys.map(k=>docRow(e,k)).join('')+'</tbody></table></div></div>'+
-    '<div class="col"><div class="card"><div class="chead"><b>תנאי העסקה</b><button class="btn pr sm" data-act="save" data-what="תנאי ההעסקה">שמירה</button></div>'+
-      '<div class="note">'+ic('warn',14)+'<span>ממלאים לפני שהעובד חותם על החוזה ועל ההודעה לעובד.</span></div>'+
-      '<div class="fields">'+fld('t-role','תפקיד (כפי שיופיע בחוזה)',e.terms.role)+fld('t-start','תאריך תחילת עבודה',e.terms.start,1)+fld('t-days','ימי עבודה בשבוע',e.terms.days)+fld('t-health','הצהרת בריאות',e.terms.health)+'</div></div>'+
-    '<div class="card"><div class="chead"><b>פרטים אישיים</b><button class="btn pr sm" data-act="save" data-what="הפרטים האישיים">שמירה</button></div>'+
-      '<div class="fields">'+fld('p-first','שם פרטי',e.personal.first)+fld('p-last','שם משפחה',e.personal.last)+fld('p-id','ת.ז',e.personal.idno,1)+fld('p-phone','טלפון',e.phone,1)+fld('p-birth','תאריך לידה',e.personal.birth?isoToD(e.personal.birth):'',1)+fld('p-addr','כתובת',e.personal.address)+'</div></div></div></div>';
+      '<button class="btn ol" data-act="edit-personal">'+ic('pen',15)+'עריכת פרטים</button>'+sendBtn+
+      '<button class="btn gr" data-act="approve" data-id="'+e.id+'" id="btnApprove"'+(st.k==='review'?'':' disabled')+'>'+ic('check',15)+'אישור קליטה</button></div></div>'+banner;
 }
-
+function fileDocsHTML(e){
+  const keys=keysOf(e);
+  const nA=keys.filter(k=>e.items[k].st==='approved').length,nS=keys.filter(k=>e.items[k].st==='submitted').length,nR=keys.filter(k=>!ITEMS[k].optional).length;
+  return '<div class="card"><div class="chead"><b>מסמכים וטפסים</b><span class="nm2">'+nA+' אושרו · '+nS+' הוגשו · '+nR+' חובה</span></div>'+
+    '<div class="tscroll"><table class="tbl docs"><thead><tr><th>פריט</th><th>סטטוס</th><th>קובץ / ערך</th><th>תוקף</th></tr></thead><tbody>'+keys.map(k=>docRow(e,k)).join('')+'</tbody></table></div></div>';
+}
+function stateHTML(e,which){
+  const j=S.justSaved;
+  return j&&j.id===e.id&&j.form===which&&Date.now()-j.at<4000?'<span class="dstate ok" data-state>'+ic('check',13)+'נשמר</span>':'<span class="dstate" data-state></span>';
+}
+const cardFoot=e=>'<div class="cfoot"><div class="ferr" data-err hidden></div><button class="btn pr sm" data-act="form-save" data-id="'+e.id+'" disabled>'+ic('check',14)+'שמירת שינויים</button><button class="btn ol sm" data-act="form-cancel" disabled>ביטול</button></div>';
+function termsCard(e){
+  const t=e.terms;
+  const days=[1,2,3,4,5,6,7].map(n=>[String(n),n===1?'יום אחד':n+' ימים']);
+  const tracks=Object.keys(TRACKS).map(k=>[k,TRACKS[k].t+' · '+TRACKS[k].items.length+' פריטים']);
+  return '<div class="card" data-form="terms"><div class="chead"><b>תנאי העסקה</b>'+stateHTML(e,'terms')+'</div>'+
+    '<div class="note">'+ic('warn',14)+'<span>ממלאים לפני שהעובד חותם על החוזה ועל ההודעה לעובד.</span></div>'+
+    '<div class="fields">'+
+      fld('t-role','תפקיד (כפי שיופיע בחוזה)',t.role,{attrs:'list="t-roles" autocomplete="off"',extra:'<datalist id="t-roles">'+ROLES.map(r=>'<option value="'+esc(r)+'">').join('')+'</datalist>'})+
+      fld('t-start','תאריך תחילת עבודה',t.start,{type:'date',ltr:1})+
+      fld('t-days','ימי עבודה בשבוע',t.days,{options:days})+
+      fld('t-health','הצהרת בריאות',t.health,{options:HEALTH.map(h=>[h,h])})+
+      fld('t-track','מסלול מסמכים',e.track,{options:tracks})+
+      (e.onboarded?fld('t-site','אתר שיבוץ',e.assigned?e.site:'',{options:[['','טרם שובץ']].concat(SITES.map(s=>[s,s]))}):'')+
+    '</div>'+cardFoot(e)+'</div>';
+}
+function personalCard(e){
+  const p=e.personal;
+  return '<div class="card" data-form="personal"><div class="chead"><b>פרטים אישיים</b>'+stateHTML(e,'personal')+'</div>'+
+    '<div class="fields">'+
+      fld('p-first','שם פרטי',p.first,{attrs:'autocomplete="off"'})+fld('p-last','שם משפחה',p.last,{attrs:'autocomplete="off"'})+
+      fld('p-id','ת.ז',p.idno,{ltr:1,attrs:'inputmode="numeric" maxlength="11" placeholder="9 ספרות" autocomplete="off"'})+
+      fld('p-phone','טלפון נייד',e.phone,{type:'tel',ltr:1,attrs:'inputmode="tel" autocomplete="off"'})+
+      fld('p-birth','תאריך לידה',p.birth,{type:'date',ltr:1,attrs:'max="'+iso(new Date())+'"'})+
+      fld('p-addr','כתובת',p.address,{attrs:'placeholder="רחוב, מספר, עיר" autocomplete="off"'})+
+    '</div>'+cardFoot(e)+'</div>';
+}
+function viewFile(){
+  const e=emp(S.fileId);
+  return '<button class="crumb" data-act="go" data-v="employees">'+ic('arR',14)+'עובדים</button>'+
+    '<div id="fHead">'+fileHeadHTML(e)+'</div>'+
+    '<div class="fgrid"><div id="fDocs">'+fileDocsHTML(e)+'</div><div class="col" id="fCards">'+termsCard(e)+personalCard(e)+'</div></div>';
+}
+function refreshFile(force){
+  const e=emp(S.fileId),h=$('#fHead'),d=$('#fDocs');
+  if(!e||!h||!d){renderMain(true);return;}
+  h.innerHTML=fileHeadHTML(e);d.innerHTML=fileDocsHTML(e);
+  $$('#fCards > .card[data-form]').forEach(c=>{
+    const w=c.dataset.form;
+    if(w===force||(!formDirty(c)&&!c.contains(document.activeElement))) c.outerHTML=w==='terms'?termsCard(e):personalCard(e);
+  });
+  renderSide();
+}
 // ---------- office: other pages ----------
 function viewAlerts(){
   const ex=expiredDocs(),soon=soonDocs(),stuck=stuckEmps(),rev=reviewEmps();
   const docRows=list=>list.map(x=>{const sent=S.renewals[x.e.id+':'+x.k];const n=daysTo(x.d);
-    return '<tr><td><button class="lnk" data-act="open" data-id="'+x.e.id+'">'+esc(x.e.name)+'</button><div class="nm2">'+esc(x.e.role)+'</div></td><td>'+esc(ITEMS[x.k].t)+'</td><td><div>'+L(fmtD(x.d))+'</div><div class="nm2 '+(n<0?'red':(n<=14?'exp-o':''))+'">'+rel(n)+'</div></td><td class="nm2">'+(sent?ago(sent):'—')+'</td><td>'+(sent?'<span class="btn sm sent">'+ic('check',14)+'נשלח</span>':'<button class="btn ol sm" data-act="renew" data-id="'+x.e.id+'" data-k="'+x.k+'">'+ic('send',14)+'בקשת חידוש</button>')+'</td></tr>';}).join('');
+    return '<tr><td><button class="lnk" data-act="open" data-id="'+x.e.id+'">'+esc(x.e.name)+'</button><div class="nm2">'+esc(x.e.role)+'</div></td><td>'+esc(ITEMS[x.k].t)+'</td><td><div>'+L(fmtD(x.d))+'</div><div class="nm2 '+(n<0?'red':(n<=14?'exp-o':''))+'">'+rel(n)+'</div></td><td class="nm2">'+(sent?ago(sent):'—')+'</td><td><div class="alt-acts">'+(sent?'<span class="btn sm sent">'+ic('check',14)+'נשלח</span>':'<button class="btn ol sm" data-act="renew" data-id="'+x.e.id+'" data-k="'+x.k+'">'+ic('send',14)+'בקשת חידוש</button>')+'<button class="btn ol sm" data-act="exp-edit" data-id="'+x.e.id+'" data-k="'+x.k+'">'+ic('pen',14)+'עדכון תוקף</button></div></td></tr>';}).join('');
   const card=(icn,title,cls,count,head,body,emptyTx)=>'<div class="card acard"><div class="chead"><span class="t">'+ic(icn,17)+title+'</span><span class="chip '+cls+'"><span>'+count+'</span><i></i></span></div>'+
-    (count?'<div class="tscroll"><table class="tbl"><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table></div>':'<div class="empty-state">'+emptyTx+'</div>')+'</div>';
+    (count?'<div class="tscroll"><table class="tbl stack"><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table></div>':'<div class="empty-state">'+emptyTx+'</div>')+'</div>';
   const H=['עובד','מסמך','תוקף','חידוש נשלח',''];
   return '<div class="ph"><div><h1>התראות</h1><p>תוקף מסמכים, עובדים שלא התקדמו ותיקים לבדיקה</p></div><div class="acts"><button class="btn ol" data-act="daily" id="btnDaily">'+ic('refresh',15)+'הרצת בדיקה יומית עכשיו</button></div></div>'+
     card('warn','מסמכים שפג תוקפם','c-r',ex.length,H,docRows(ex),'אין מסמכים שפג תוקפם.')+
@@ -837,8 +970,8 @@ function viewAlerts(){
 function viewMessages(){
   const sc={'נשלח':'c-g','נמסר':'c-b','נקרא':'c-gr'};
   return '<div class="ph"><div><h1>הודעות שנשלחו</h1><p>כל הקישורים, התזכורות ובקשות החידוש שיצאו לעובדים</p></div></div>'+
-    '<div class="card"><div class="tscroll"><table class="tbl" style="min-width:620px"><thead><tr><th>מתי</th><th>נמען</th><th>סוג</th><th>ערוץ</th><th>סטטוס</th></tr></thead><tbody>'+
-    S.msgs.map(m=>'<tr><td><div>'+esc(ago(m.at))+'</div><div class="nm2">'+L(fmtD(new Date(m.at))+' '+fmtT(new Date(m.at)))+'</div></td><td>'+esc(m.to)+'</td><td>'+esc(m.kind)+'</td><td>'+esc(m.ch)+'</td><td><span class="chip '+sc[m.st]+'"><span>'+m.st+'</span><i></i></span></td></tr>').join('')+
+    '<div class="card"><div class="tscroll"><table class="tbl stack msgs"><thead><tr><th>מתי</th><th>נמען</th><th>סוג</th><th>ערוץ</th><th>סטטוס</th></tr></thead><tbody>'+
+    S.msgs.map(m=>'<tr><td><div>'+esc(ago(m.at))+'</div><div class="nm2">'+L(fmtD(new Date(m.at))+' '+fmtT(new Date(m.at)))+'</div></td><td>'+esc(m.empId&&emp(m.empId)?emp(m.empId).name:m.to)+'</td><td>'+esc(m.kind)+'</td><td>'+esc(m.ch)+'</td><td><span class="chip '+sc[m.st]+'"><span>'+m.st+'</span><i></i></span></td></tr>').join('')+
     '</tbody></table></div></div>';
 }
 function viewPending(){
@@ -853,13 +986,13 @@ function viewSettings(){
     '<div class="sbox">'+
     '<div class="card"><h3>פרטי החברה</h3><div class="kv"><span>שם שמופיע לעובדים</span><b>החברה שלך</b></div><div class="kv"><span>ערוצי שליחה</span><b>WhatsApp ו-SMS</b></div><div class="kv"><span>שפת הממשק</span><b>עברית</b></div></div>'+
     '<div class="card"><h3>התראות תוקף</h3><div class="kv"><span>התראה לפני שתוקף מסתיים</span><b>30 יום</b></div><div class="kv"><span>בדיקה אוטומטית</span><b>כל יום</b></div><div class="kv"><span>עובד שלא התקדם</span><b>אחרי 5 ימים</b></div></div>'+
-    Object.values(TRACKS).map(t=>'<div class="card"><h3>מסלול '+esc(t.t)+' · '+t.items.length+' פריטים</h3><ul>'+t.items.map(k=>'<li>'+esc(ITEMS[k].t)+(ITEMS[k].optional?' <span class="nm2">(לא חובה)</span>':'')+'</li>').join('')+'</ul></div>').join('')+
+    Object.values(TRACKS).map(t=>'<div class="card"><h3>מסלול '+esc(t.t)+' · '+t.items.length+' פריטים</h3><ul>'+t.items.map(k=>'<li>'+esc(ITEMS[k].t)+' <span class="nm2">· '+TYPE_LBL[ITEMS[k].type]+(ITEMS[k].optional?' · לא חובה':'')+'</span></li>').join('')+'</ul></div>').join('')+
     '</div>';
 }
 
 // ---------- modal ----------
-function modal(html){$('#modalRoot').innerHTML='<div class="ovl" data-act="ovl">'+html+'</div>';const f=$('#modalRoot input:not([type=hidden]),#modalRoot button');if(f) setTimeout(()=>{try{f.focus()}catch(_){}} ,30)}
-function closeModal(){$('#modalRoot').innerHTML=''}
+function modal(html){$('#modalRoot').innerHTML='<div class="ovl" data-act="ovl">'+html+'</div>';const fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;const f=(fine&&$('#modalRoot .inp'))||$('#modalRoot button');if(f) setTimeout(()=>{try{f.focus()}catch(_){}},30)}
+function closeModal(){$('#modalRoot').innerHTML='';S.up=null}
 function openNew(){
   const s=NEXT_NAMES[S.created%NEXT_NAMES.length];
   modal('<form class="dlg" id="newForm" novalidate role="dialog" aria-modal="true" aria-labelledby="nfT"><div class="dlg-h"><h3 id="nfT">עובד חדש</h3><button type="button" class="x" data-act="close" aria-label="סגירה">'+ic('x',18)+'</button></div>'+
@@ -881,7 +1014,7 @@ function createEmp(){
   TRACKS[track].items.forEach(k=>items[k]={st:'pending',at:null,exp:null,sig:null,img:null,note:null});
   const e={id:'n'+Date.now(),name,phone,idno:'',role,track,items,onboarded:false,assigned:false,site:'',activity:null,linkSent:null,opened:false,isNew:true,
     personal:{first:parts[0],last:parts.slice(1).join(' '),idno:'',birth:'',address:''},
-    terms:{role,start:fmtD(addDays(7)),days:'5',health:track==='guard'?'רישיון נשק (משרד הביטחון)':'כללית'}};
+    terms:{role,start:iso(addDays(7)),days:'5',health:track==='guard'?'רישיון נשק (משרד הביטחון)':'כללית'}};
   S.emps.unshift(e);S.created++;S.flashId=e.id;S.filters={q:'',role:'',status:'',exp:'',missing:false};
   closeModal();S.view='employees';renderMain(false);
   setTimeout(()=>{S.flashId=null},2700);
@@ -899,20 +1032,22 @@ function sendLink(e){
   doneTask('create');
 }
 function openViewer(id,k){
-  const e=emp(id),it=e.items[k],I=ITEMS[k];
+  const e=emp(id),it=e.items[k],I=ITEMS[k],scan=I.type==='sign'&&!!it.img;
   let body;
-  if(I.type==='sign') body=docHTML(k,e,it.sig||sampleSig(e.name),it.at);
+  if(I.type==='sign'&&!scan) body=docHTML(k,e,it.sig||sampleSig(e.name),it.at);
   else if(I.type==='form') body=personalDL(e);
   else body='<div style="width:100%"><div class="imgs">'+(it.img||defaultImgs(k)).map(src=>'<img src="'+src+'" alt="'+esc(I.t)+'">').join('')+'</div>'+(it.exp?'<div class="nm2" style="margin-top:8px">תאריך תוקף: '+L(fmtD(it.exp))+'</div>':'')+'</div>';
-  const reasons=I.type==='sign'?['החתימה לא ברורה','פרט שגוי בטופס']:(I.type==='form'?['פרט שגוי','חסרה כתובת']:(k==='idcard'?['הצילום לא ברור','חסר הספח']:['הצילום לא ברור','המסמך לא בתוקף']));
+  const reasons=k==='f101'?['הצילום לא ברור','חסרה חתימה','חסר פרט בטופס']:(I.type==='sign'?(scan?['הצילום לא ברור','חסרה חתימה']:['החתימה לא ברורה','פרט שגוי בטופס']):(I.type==='form'?['פרט שגוי','חסרה כתובת']:(k==='idcard'?['הצילום לא ברור','חסר הספח']:['הצילום לא ברור','המסמך לא בתוקף'])));
+  const more=(I.type==='form'?'<button class="btn ol" data-act="edit-personal">'+ic('pen',15)+'עריכת הפרטים</button>':'<button class="btn ol" data-act="upload" data-id="'+id+'" data-k="'+k+'">'+ic('upload',15)+'החלפת קובץ</button>')+
+    (it.exp?'<button class="btn ol" data-act="exp-edit" data-id="'+id+'" data-k="'+k+'">'+ic('clock',15)+'עדכון תוקף</button>':'');
   const acts=it.st==='submitted'?
-    '<div class="dlg-f" id="vacts"><button class="btn gr" data-act="item-ok" data-id="'+id+'" data-k="'+k+'">'+ic('check',15)+'אישור הפריט</button><button class="btn ol" data-act="item-rej" >בקשת תיקון מהעובד</button><button class="btn ol" data-act="close">סגירה</button></div>'+
+    '<div class="dlg-f" id="vacts"><button class="btn gr" data-act="item-ok" data-id="'+id+'" data-k="'+k+'">'+ic('check',15)+'אישור הפריט</button><button class="btn ol" data-act="item-rej">בקשת תיקון מהעובד</button><button class="btn ol" data-act="close">סגירה</button></div>'+
     '<div class="rejbox" id="rejbox" hidden><div class="fld"><label>מה צריך לתקן?</label><div class="reasons">'+reasons.map((r,i)=>'<label class="rchip"><input type="radio" name="rr" value="'+esc(r)+'"'+(i?'':' checked')+'>'+esc(r)+'</label>').join('')+'</div></div>'+
     '<div class="dlg-f"><button class="btn pr" data-act="item-rej-send" data-id="'+id+'" data-k="'+k+'">'+ic('send',15)+'שליחה לעובד</button><button class="btn ol" data-act="item-rej-cancel">ביטול</button></div></div>'
-    :'<div class="dlg-f"><span class="chip c-gr"><span>אושר</span><i></i></span><button class="btn ol" data-act="close">סגירה</button></div>';
-  modal('<div class="dlg wide" role="dialog" aria-modal="true" aria-labelledby="vT"><div class="dlg-h"><h3 id="vT">'+esc(I.t)+' · '+esc(e.name)+'</h3><button class="x" data-act="close" aria-label="סגירה">'+ic('x',18)+'</button></div><div class="vbody">'+body+'</div><div class="nm2 meta2">הוגש מהטלפון '+esc(it.at?ago(it.at):'')+(it.at?' · '+L(fmtD(new Date(it.at))+' '+fmtT(new Date(it.at))):'')+'</div>'+acts+'</div>');
+    :'<div class="dlg-f"><span class="chip c-gr"><span>אושר</span><i></i></span>'+more+'<button class="btn ol" data-act="close">סגירה</button></div>';
+  const src=it.by==='office'?(I.type==='form'?'מולא מהמשרד':'הועלה מהמשרד'):'הוגש מהטלפון';
+  modal('<div class="dlg wide" role="dialog" aria-modal="true" aria-labelledby="vT"><div class="dlg-h"><h3 id="vT">'+esc(I.t)+' · '+esc(e.name)+'</h3><button class="x" data-act="close" aria-label="סגירה">'+ic('x',18)+'</button></div><div class="vbody">'+body+'</div><div class="nm2 meta2">'+src+' '+esc(it.at?ago(it.at):'')+(it.at?' · '+L(fmtD(new Date(it.at))+' '+fmtT(new Date(it.at))):'')+'</div>'+acts+'</div>');
 }
-
 // ---------- office actions ----------
 function logMsg(to,kind,ch,empId){const m={at:Date.now(),to,kind,ch:ch||'WhatsApp',st:'נשלח',empId};S.msgs.unshift(m);setTimeout(()=>{if(m.st==='נשלח'){m.st='נמסר';if(S.view==='messages') renderMain(true);}},2500);return m}
 function remind(id){
@@ -947,6 +1082,159 @@ function daily(btn){
   setTimeout(()=>{renderMain(true);toast('הבדיקה היומית הסתיימה',expiredDocs().length+' פג תוקף · '+soonDocs().length+' מסתיימים בחודש הקרוב · '+stuckEmps().length+' לא התקדמו','info');},900);
 }
 function assign(id){const e=emp(id),sel=$('#site-'+id);e.assigned=true;e.site=sel?sel.value:SITES[0];toast('השיבוץ נשמר',e.name+' · '+e.site,'ok');refreshOffice()}
+
+// ---------- office: editing the employee file ----------
+function formDirty(c){return !!c&&$$('[data-orig]',c).some(el=>el.value!==el.dataset.orig)}
+function anyDirty(){return S.view==='file'&&$$('#fCards .card[data-form]').some(formDirty)}
+function updForm(c){
+  const d=formDirty(c);c.classList.toggle('is-dirty',d);
+  $$('[data-act=form-save],[data-act=form-cancel]',c).forEach(b=>b.disabled=!d);
+  const st=$('[data-state]',c);if(!st) return;
+  if(d){st.className='dstate dirty';st.textContent='יש שינויים שלא נשמרו';}
+  else if(st.classList.contains('dirty')){st.className='dstate';st.textContent='';}
+}
+function cancelForm(c){
+  $$('[data-orig]',c).forEach(el=>{el.value=el.dataset.orig;el.classList.remove('bad');});
+  const er=$('[data-err]',c);if(er) er.hidden=true;updForm(c);
+}
+function changeTrack(e,track){
+  const before=keysOf(e),after=TRACKS[track].items;
+  after.forEach(k=>{if(!e.items[k]) e.items[k]={st:'pending',at:null,exp:null,sig:null,img:null,note:null};});
+  e.track=track;
+  return {added:after.filter(k=>before.indexOf(k)<0).length,removed:before.filter(k=>after.indexOf(k)<0).length};
+}
+function saveForm(c){
+  const e=emp(S.fileId);if(!e||!c) return false;
+  const w=c.dataset.form,err=$('[data-err]',c),v={};
+  $$('[data-orig]',c).forEach(el=>{v[el.id]=el.value;});
+  $$('.inp.bad',c).forEach(el=>el.classList.remove('bad'));
+  const fail=(id,msg)=>{err.textContent=msg;err.hidden=false;const el=$('#'+id);if(el){el.classList.add('bad');try{el.focus()}catch(_){}}return false;};
+  const clean=s=>String(s||'').trim().replace(/\s+/g,' ');
+  let title,sub,action=null;
+  if(w==='personal'){
+    const first=clean(v['p-first']),last=clean(v['p-last']),idno=String(v['p-id']||'').replace(/\D/g,''),birth=v['p-birth']||'',address=clean(v['p-addr']);
+    let ph=String(v['p-phone']||'').replace(/\D/g,'');if(/^9725\d{8}$/.test(ph)) ph='0'+ph.slice(3);
+    if(!first) return fail('p-first','צריך למלא שם פרטי.');
+    if(!last) return fail('p-last','צריך למלא שם משפחה.');
+    if(idno&&idno.length!==9) return fail('p-id','מספר תעודת זהות צריך לכלול 9 ספרות.');
+    if(!/^05\d{8}$/.test(ph)) return fail('p-phone','מספר נייד צריך להתחיל ב-05 ולכלול 10 ספרות, למשל 050-1234567.');
+    if(birth){const b=fromIso(birth);if(!b||b>new Date()||b.getFullYear()<1920) return fail('p-birth','תאריך הלידה לא תקין.');}
+    const phone=ph.slice(0,3)+'-'+ph.slice(3),phoneChanged=phone!==e.phone;
+    Object.assign(e.personal,{first,last,idno,birth,address});e.name=first+' '+last;e.phone=phone;e.idno=idno;
+    title='הפרטים האישיים נשמרו';sub=e.name;
+    const it=e.items.personal;
+    if(it&&(it.st==='pending'||it.st==='rejected')&&idno.length===9&&birth&&address.length>=3){Object.assign(it,{st:'approved',at:Date.now(),note:null,by:'office'});sub+=' · "פרטים אישיים" סומן כהושלם';}
+    if(phoneChanged) sub+=' · ההודעות הבאות יישלחו ל-'+phone;
+  } else {
+    const role=clean(v['t-role']),start=v['t-start']||'';
+    if(!role) return fail('t-role','צריך למלא תפקיד.');
+    if(start&&!fromIso(start)) return fail('t-start','תאריך תחילת העבודה לא תקין.');
+    Object.assign(e.terms,{role,start,days:v['t-days'],health:v['t-health']});e.role=role;
+    title='תנאי ההעסקה נשמרו';sub=e.name+' · '+role;
+    if(v['t-track']&&v['t-track']!==e.track){
+      const r=changeTrack(e,v['t-track']);
+      sub+=' · מסלול '+TRACKS[e.track].t+(r.added?' · נוספו '+r.added+' פריטים':'')+(r.removed?' · הוסרו '+r.removed+' פריטים':'');
+      if(r.added&&!e.onboarded&&e.linkSent) action={label:'שליחת תזכורת',act:'remind',id:e.id};
+    }
+    if('t-site' in v){const s=v['t-site'];if(s!==(e.assigned?e.site:'')){e.site=s;e.assigned=!!s;sub+=s?' · שובץ/ה ב'+s:' · השיבוץ בוטל';}}
+  }
+  S.justSaved={id:e.id,form:w,at:Date.now()};
+  refreshFile(w);
+  setTimeout(()=>{const st=$('#fCards .card[data-form="'+w+'"] .dstate.ok');if(st){st.className='dstate';st.textContent='';}},4000);
+  if(S.phone.empId===e.id&&!(SIG&&SIG.ink)) renderPhone();
+  toast(title,sub,'ok',action);
+  return true;
+}
+function editPersonal(){
+  const c=$('#fCards .card[data-form="personal"]');if(!c) return;
+  if(isNarrow()) setTab('office');
+  c.scrollIntoView({behavior:'smooth',block:'start'});
+  pulse('#fCards .card[data-form="personal"]');
+  if(window.matchMedia&&window.matchMedia('(pointer:fine)').matches) setTimeout(()=>{const f=$('#p-first');if(f) f.focus({preventScroll:true});},400);
+}
+function guard(fn){
+  if(!anyDirty()) return fn();
+  S.pendingNav=fn;
+  modal('<div class="dlg" role="dialog" aria-modal="true" aria-labelledby="gT"><div class="dlg-h"><h3 id="gT">יש שינויים שלא נשמרו</h3><button class="x" data-act="close" aria-label="חזרה לעריכה">'+ic('x',18)+'</button></div>'+
+    '<p class="uinfo">לשמור את השינויים בתיק של '+esc(emp(S.fileId).name)+' לפני שממשיכים?</p>'+
+    '<div class="dlg-f"><button class="btn pr" data-act="nav-save">'+ic('check',15)+'שמירה והמשך</button><button class="btn ol" data-act="nav-discard">המשך בלי לשמור</button><button class="btn ol" data-act="close">חזרה לעריכה</button></div></div>');
+}
+// office upload / replace
+function upSlots(k){const I=ITEMS[k];return I.type==='upload2'?[['front','צד קדמי'],['back','צד אחורי + ספח']]:[['single',I.type==='sign'?'הטופס החתום':short(k)]]}
+function otile(slot,label){
+  const src=S.up.files[slot];
+  return '<div class="tile'+(src?' has':'')+'">'+(src?'<img src="'+src+'" alt="'+esc(label)+'"><span class="tk-ok">'+ic('check',14)+'</span>':'<span class="t-ic">'+ic('upload',22)+'</span><span class="t-lb">'+esc(label)+'</span>')+
+    '<div class="t-acts"><label class="tbtn">'+(src?'החלפה':'בחירת קובץ')+'<input class="vh" type="file" accept="image/*,application/pdf" data-oslot="'+slot+'"></label>'+(src?'':'<button class="tbtn alt" data-act="up-sample" data-slot="'+slot+'">דוגמה</button>')+'</div></div>';
+}
+function upTilesHTML(){return S.up?upSlots(S.up.k).map(s=>otile(s[0],s[1])).join(''):''}
+function openUpload(id,k){
+  const e=emp(id),I=ITEMS[k];if(!e||!I||I.type==='form') return;
+  const it=e.items[k],has=it.st==='submitted'||it.st==='approved';
+  const what=I.type==='sign'?'צילום או סריקה של הטופס החתום':(I.type==='upload2'?'שני הצדדים של התעודה, כולל הספח':'צילום או קובץ PDF');
+  const expRow=I.expInput?fld('up-exp','תאריך תוקף',it.exp?iso(it.exp):'',{type:'date',ltr:1})
+    :(I.exp?'<p class="uinfo">'+ic('clock',14)+'<span>התוקף יתעדכן אוטומטית ל-'+L(fmtD(I.exp==='eoy'?endOfYear():addDays(I.exp)))+'</span></p>':'');
+  modal('<div class="dlg" role="dialog" aria-modal="true" aria-labelledby="upT"><div class="dlg-h"><h3 id="upT">'+(has?'החלפת קובץ':'העלאה מהמשרד')+' · '+esc(short(k))+'</h3><button class="x" data-act="close" aria-label="סגירה">'+ic('x',18)+'</button></div>'+
+    '<p class="uinfo">'+esc(e.name)+' · '+esc(what)+'. הקובץ יישמר בתיק ויסומן כמאושר.</p>'+
+    '<div class="tiles'+(upSlots(k).length===1?' one':'')+'" id="upTiles"></div>'+
+    (expRow?'<div style="margin-top:12px">'+expRow+'</div>':'')+
+    '<div class="ferr" id="up-err" hidden></div>'+
+    '<div class="dlg-f"><button class="btn pr" data-act="up-save">'+ic('upload',15)+'שמירה בתיק</button><button class="btn ol" data-act="close">ביטול</button></div></div>');
+  S.up={id,k,files:{}};
+  $('#upTiles').innerHTML=upTilesHTML();
+}
+function upSample(slot){
+  const u=S.up;if(!u) return;
+  u.files[slot]=slot==='front'||slot==='back'?sampleImg(slot):sampleImg(u.k==='bank'?'bank':u.k);
+  const b=$('#upTiles');if(b) b.innerHTML=upTilesHTML();
+  const er=$('#up-err');if(er) er.hidden=true;
+  if(ITEMS[u.k].expInput){const ex=$('#up-exp');if(ex&&!ex.value) ex.value=iso(addDays(u.k==='refresher'?240:330));}
+}
+function saveOfficeUpload(){
+  const u=S.up;if(!u) return;const e=emp(u.id);if(!e) return;
+  const k=u.k,I=ITEMS[k],it=e.items[k],err=$('#up-err'),slots=upSlots(k).map(s=>s[0]);
+  const bad=t=>{err.textContent=t;err.hidden=false;};
+  if(slots.some(s=>!u.files[s])) return bad(slots.length>1?'צריך להעלות את שני הצדדים.':'צריך לבחור קובץ, או ללחוץ "דוגמה".');
+  let exp=null;
+  if(I.expInput){exp=fromIso(($('#up-exp')||{}).value);if(!exp) return bad('צריך לבחור תאריך תוקף.');}
+  else if(I.exp==='eoy') exp=endOfYear(); else if(typeof I.exp==='number') exp=addDays(I.exp);
+  Object.assign(it,{st:'approved',at:Date.now(),img:slots.map(s=>u.files[s]),sig:null,note:null,exp,by:'office'});
+  delete S.renewals[e.id+':'+k];
+  closeModal();
+  toast('הקובץ נשמר בתיק',I.t+' · '+e.name,'ok');
+  refreshOffice();if(S.phone.empId===e.id) renderPhone();
+}
+// expiry date
+function openExp(id,k){
+  const e=emp(id),it=e&&e.items[k];if(!it) return;
+  modal('<form class="dlg" id="expForm" novalidate role="dialog" aria-modal="true" aria-labelledby="exT" data-id="'+id+'" data-k="'+k+'"><div class="dlg-h"><h3 id="exT">עדכון תאריך תוקף</h3><button type="button" class="x" data-act="close" aria-label="סגירה">'+ic('x',18)+'</button></div>'+
+    '<p class="uinfo">'+esc(ITEMS[k].t)+' · '+esc(e.name)+'</p>'+
+    '<div class="fld"><label for="ex-date">בתוקף עד</label><input id="ex-date" class="inp" type="date" dir="ltr" style="text-align:right" value="'+(it.exp?iso(it.exp):'')+'"><div class="hint">התראה תופיע 30 יום לפני שהתוקף מסתיים.</div></div>'+
+    '<div class="ferr" id="ex-err" hidden></div>'+
+    '<div class="dlg-f"><button type="submit" class="btn pr">'+ic('check',15)+'שמירה</button><button type="button" class="btn ol" data-act="close">ביטול</button></div></form>');
+}
+function saveExp(form){
+  const e=emp(form.dataset.id),k=form.dataset.k,d=fromIso(($('#ex-date')||{}).value),err=$('#ex-err');
+  if(!e) return;
+  if(!d){err.textContent='צריך לבחור תאריך.';err.hidden=false;return;}
+  e.items[k].exp=d;delete S.renewals[e.id+':'+k];
+  closeModal();
+  toast('תאריך התוקף עודכן',short(k)+' · '+e.name+' · עד '+fmtD(d)+(daysTo(d)<0?' (כבר פג)':''),'ok');
+  refreshOffice();
+}
+// export
+function exportCsv(){
+  const list=filtered(),q=c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"';
+  const head=['שם','טלפון','ת.ז','תפקיד','סטטוס','התקדמות','תוקף קרוב','מסמך','פעילות אחרונה'];
+  const rows=list.map(e=>{const st=status(e),pr=progress(e),ex=nearestExp(e);
+    return [q(e.name),q(e.phone),e.personal.idno?'="'+e.personal.idno+'"':'""',q(e.role),q(st.t),q(pr.done+' מתוך '+pr.total),q(ex?fmtD(ex.d):''),q(ex?short(ex.k):''),q(e.linkSent&&!e.opened?'טרם נכנס/ה':ago(e.activity))].join(',');});
+  const csv='﻿'+head.map(q).join(',')+'\r\n'+rows.join('\r\n');
+  try{
+    const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download='employees-'+iso(new Date())+'.csv';a.style.display='none';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+    toast('הקובץ ירד',list.length+' עובדים · נפתח ב-Excel','ok');
+  }catch(_){toast('ההורדה חסומה בדפדפן הזה','במערכת עצמה הטבלה יורדת כקובץ Excel','info');}
+}
 
 // ---------- toasts / guide / tabs ----------
 function toast(title,sub,kind,action){
@@ -1024,9 +1312,9 @@ function pHome(e){
 }
 const pfld=(id,label,val,attrs)=>'<div class="pfld"><label for="'+id+'">'+label+'</label><input id="'+id+'" class="pinp" value="'+esc(val||'')+'" '+(attrs||'type="text"')+'></div>';
 function tile(slot,label,tall){
-  const src=S.phone.files[slot];
-  return '<div class="tile'+(tall?' tall':'')+(src?' has':'')+'">'+(src?'<img src="'+src+'" alt="'+esc(label)+'"><span class="tk-ok">'+ic('check',14)+'</span>':'<span class="t-ic">'+ic('camera',22)+'</span><span class="t-lb">'+esc(label)+'</span>')+
-    '<div class="t-acts"><label class="tbtn">'+(src?'החלפה':'צילום / העלאה')+'<input class="vh" type="file" accept="image/*" capture="environment" data-slot="'+slot+'"></label>'+(src?'':'<button class="tbtn alt" data-act="p-sample" data-slot="'+slot+'">דוגמה</button>')+'</div></div>';
+  const src=S.phone.files[slot],pdf=!!(ITEMS[S.phone.step]||{}).pdf;
+  return '<div class="tile'+(tall?' tall':'')+(src?' has':'')+'">'+(src?'<img src="'+src+'" alt="'+esc(label)+'"><span class="tk-ok">'+ic('check',14)+'</span>':'<span class="t-ic">'+ic(pdf?'upload':'camera',22)+'</span><span class="t-lb">'+esc(label)+'</span>')+
+    '<div class="t-acts"><label class="tbtn">'+(src?'החלפה':'צילום / העלאה')+'<input class="vh" type="file" accept="'+(pdf?'image/*,application/pdf':'image/*')+'"'+(pdf?'':' capture="environment"')+' data-slot="'+slot+'"></label>'+(src?'':'<button class="tbtn alt" data-act="p-sample" data-slot="'+slot+'">דוגמה</button>')+'</div></div>';
 }
 function pStep(e,k){
   const I=ITEMS[k],keys=keysOf(e),idx=keys.indexOf(k)+1,F=S.phone.files,D=S.phone.draft;
@@ -1044,9 +1332,10 @@ function pStep(e,k){
       '<p class="pnote">'+ic('lock',14)+'<span>בדמו אין צורך בתעודה אמיתית: לחצו "דוגמה". צילום שתעלו נשאר רק בדפדפן שלכם.</span></p>';
     foot='<button class="pbtn" data-act="p-upload"'+(F.front&&F.back?'':' disabled')+'>'+ic('upload',18)+'העלאה</button>';
   } else if(I.type==='upload1'){
-    const hint={bank:'צלמו אישור ניהול חשבון או צ׳ק מבוטל.',weapon:'צלמו את רישיון הנשק ורשמו את תאריך התוקף שלו.',refresher:'צלמו את אישור הריענון האחרון ורשמו עד מתי הוא בתוקף.'}[k]||'';
+    const hint={f101:'מלאו את טופס 101 וחתמו עליו, ואז צלמו אותו או העלו קובץ (תמונה או PDF).',bank:'צלמו אישור ניהול חשבון או צ׳ק מבוטל, או העלו קובץ.',weapon:'צלמו את רישיון הנשק ורשמו את תאריך התוקף שלו.',refresher:'צלמו את אישור הריענון האחרון ורשמו עד מתי הוא בתוקף.'}[k]||'';
     body='<p class="phint">'+hint+'</p>'+tile('single',I.t,true)+(I.expInput?'<div class="pfld" style="margin-top:12px">'+'<label for="p-exp">תאריך תוקף</label><input id="p-exp" class="pinp" type="date" dir="ltr" value="'+esc(D.exp||'')+'"></div>':'')+
-      '<div class="perr" id="perr" hidden></div><p class="pnote">'+ic('lock',14)+'<span>בדמו אפשר ללחוץ "דוגמה". צילום שתעלו נשאר רק בדפדפן שלכם.</span></p>';
+      (I.exp==='eoy'?'<p class="pnote">'+ic('clock',14)+'<span>הטופס בתוקף עד סוף שנת המס ('+L(fmtD(endOfYear()))+'). המערכת תזכיר לחדש אותו.</span></p>':'')+
+      '<div class="perr" id="perr" hidden></div><p class="pnote">'+ic('lock',14)+'<span>בדמו אפשר ללחוץ "דוגמה". קובץ שתעלו נשאר רק בדפדפן שלכם.</span></p>';
     foot='<button class="pbtn" data-act="p-upload"'+(F.single?'':' disabled')+'>'+ic('upload',18)+'העלאה</button>';
   } else {
     const fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
@@ -1062,6 +1351,8 @@ function pDone(e){
 }
 function renderPhone(){
   const P=S.phone,e=emp(P.empId),scr=$('#screen');
+  if(e&&P.screen==='step'){const it=e.items[P.step];if(keysOf(e).indexOf(P.step)<0||!it||it.st==='approved'){P.step=null;P.screen=nextPending(e)?'home':'done';}}
+  if(e&&P.screen==='done'&&nextPending(e)) P.screen='home';
   let html,light=false;
   if(!e||P.screen==='idle'){html=pIdle();light=true;}
   else if(P.screen==='chat') html=pChat(e);
@@ -1090,7 +1381,7 @@ function openLink(){
 function goStep(k){const P=S.phone,e=emp(P.empId);if(!e||e.items[k].st==='approved') return;P.step=k;P.files={};P.draft={};P.screen='step';renderPhone();const b=$('#screen .s-body');if(b) b.scrollTop=0}
 function completeItem(e,k,data){
   const it=e.items[k],I=ITEMS[k];
-  Object.assign(it,{st:'submitted',at:Date.now(),note:null},data||{});
+  Object.assign(it,{st:'submitted',at:Date.now(),note:null,img:null,sig:null,by:'phone'},data||{});
   if(I.exp==='eoy') it.exp=endOfYear(); else if(typeof I.exp==='number') it.exp=addDays(I.exp);
   e.activity=Date.now();
 }
@@ -1113,7 +1404,7 @@ function savePersonal(){
   if(idno.length!==9) return bad('מספר תעודת זהות צריך לכלול 9 ספרות.');
   if(!birth) return bad('צריך לבחור תאריך לידה.');
   if(address.length<3) return bad('צריך למלא כתובת מגורים.');
-  Object.assign(e.personal,{first,last,idno,birth,address});e.idno=idno;
+  Object.assign(e.personal,{first,last,idno,birth,address});e.idno=idno;e.name=first+' '+last;
   completeItem(e,'personal');afterSubmit(e,'הפרטים נשמרו');
 }
 function fillSample(){
@@ -1185,17 +1476,24 @@ function skip(){const e=emp(S.phone.empId),k=S.phone.step,it=e.items[k];it.st='s
 
 // ---------- events ----------
 const ACT={
-  go:a=>go(a.dataset.v), open:a=>{closeModal();openFile(a.dataset.id);if(isNarrow()) setTab('office');}, new:()=>{if(isNarrow()) setTab('office');openNew();},
-  close:()=>closeModal(), ovl:(a,ev)=>{if(ev.target===a) closeModal();},
-  export:()=>toast('בדמו הייצוא כבוי','במערכת עצמה הטבלה יורדת כקובץ Excel','info'),
+  go:a=>guard(()=>go(a.dataset.v)),
+  open:a=>{const id=a.dataset.id;closeModal();if(S.view==='file'&&S.fileId===id){if(isNarrow()) setTab('office');return;}guard(()=>{openFile(id);if(isNarrow()) setTab('office');});},
+  new:()=>guard(()=>{if(isNarrow()) setTab('office');openNew();}),
+  close:()=>closeModal(), ovl:(a,ev)=>{if(ev.target===a&&downOvl) closeModal();},
+  export:()=>exportCsv(),
   remind:a=>remind(a.dataset.id), approve:a=>approve(a.dataset.id),
   view:a=>openViewer(a.dataset.id,a.dataset.k), 'item-ok':a=>itemOk(a.dataset.id,a.dataset.k),
   'item-rej':()=>{$('#rejbox').hidden=false;$('#vacts').hidden=true;}, 'item-rej-cancel':()=>{$('#rejbox').hidden=true;$('#vacts').hidden=false;},
   'item-rej-send':a=>{const r=$('input[name=rr]:checked');itemReject(a.dataset.id,a.dataset.k,r?r.value:'צריך לתקן');},
   renew:a=>renew(a.dataset.id,a.dataset.k), daily:a=>daily(a), assign:a=>assign(a.dataset.id),
-  save:a=>toast('נשמר',a.dataset.what+' עודכנו בתיק','ok'),
+  'form-save':a=>{const c=a.closest('.card[data-form]');if(c) saveForm(c);}, 'form-cancel':a=>{const c=a.closest('.card[data-form]');if(c) cancelForm(c);},
+  'edit-personal':()=>{closeModal();editPersonal();}, 'send-link':a=>{const e=emp(a.dataset.id);if(e) sendLink(e);},
+  upload:a=>openUpload(a.dataset.id,a.dataset.k), 'up-sample':a=>upSample(a.dataset.slot), 'up-save':()=>saveOfficeUpload(),
+  'exp-edit':a=>openExp(a.dataset.id,a.dataset.k),
+  'nav-save':()=>{closeModal();const fn=S.pendingNav;S.pendingNav=null;const ok=$$('#fCards .card[data-form]').filter(formDirty).every(c=>saveForm(c));if(ok&&fn) fn();},
+  'nav-discard':()=>{closeModal();const fn=S.pendingNav;S.pendingNav=null;if(fn) fn();},
   'clear-filters':()=>{S.filters={q:'',role:'',status:'',exp:'',missing:false};renderMain(false);},
-  tab:a=>setTab(a.dataset.v), task:a=>taskGo(a.dataset.v),
+  tab:a=>setTab(a.dataset.v), task:a=>guard(()=>taskGo(a.dataset.v)),
   reset:a=>{if(!S.resetArm){S.resetArm=true;a.classList.add('warn');a.innerHTML=ic('refresh',15)+'לאפס הכול? לחצו שוב';setTimeout(()=>{S.resetArm=false;a.classList.remove('warn');a.innerHTML=RESET_HTML;},3200);return;}
     S.resetArm=false;a.classList.remove('warn');a.innerHTML=RESET_HTML;closeModal();initState();renderAll();toast('הדמו התחיל מחדש','כל השינויים נמחקו','ok');},
   'p-chat':()=>{S.phone.notif=null;S.phone.screen='chat';renderPhone();}, 'p-lock':()=>{S.phone.screen='idle';renderPhone();},
@@ -1203,6 +1501,8 @@ const ACT={
   'p-fill':()=>fillSample(), 'p-save-personal':()=>savePersonal(), 'p-sample':a=>useSample(a.dataset.slot), 'p-upload':()=>saveUpload(),
   'p-sig-clear':()=>sigClear(), 'p-sig-reuse':()=>sigReuse(), 'p-sign':()=>sign(), 'p-skip':()=>skip(), 'p-quick':()=>quickFill()
 };
+let downOvl=false;
+document.addEventListener('pointerdown',ev=>{downOvl=!!(ev.target&&ev.target.classList&&ev.target.classList.contains('ovl'));},true);
 document.addEventListener('click',ev=>{
   const a=ev.target.closest('[data-act]');if(!a) return;
   if(a.tagName==='LABEL') return;
@@ -1213,23 +1513,35 @@ document.addEventListener('click',ev=>{
 });
 document.addEventListener('keydown',ev=>{
   if(ev.key==='Escape'&&$('#modalRoot').firstChild){closeModal();return;}
+  if(ev.key==='Enter'&&ev.target.matches&&ev.target.matches('#fCards .card[data-form] input')){ev.preventDefault();const c=ev.target.closest('.card[data-form]');if(formDirty(c)) saveForm(c);return;}
   if((ev.key==='Enter'||ev.key===' ')&&ev.target.matches('tr[data-act]')){ev.preventDefault();ev.target.click();}
 });
-document.addEventListener('submit',ev=>{if(ev.target.id==='newForm'){ev.preventDefault();createEmp();}});
+document.addEventListener('submit',ev=>{if(ev.target.id==='newForm'){ev.preventDefault();createEmp();}else if(ev.target.id==='expForm'){ev.preventDefault();saveExp(ev.target);}});
 document.addEventListener('input',ev=>{
   const t=ev.target;
   if(t.id==='q'){S.filters.q=t.value;$('#tbody').innerHTML=rowsHTML();}
   else if(t.id&&(t.id.indexOf('pf-')===0||t.id==='p-exp')){syncDraft();const er=$('#perr');if(er) er.hidden=true;}
+  else if(t.closest&&t.closest('#fCards .card[data-form]')){const c=t.closest('.card[data-form]');t.classList.remove('bad');const er=$('[data-err]',c);if(er) er.hidden=true;updForm(c);}
+  else if(t.id==='ex-date'||t.id==='up-exp'){$$('#ex-err,#up-err').forEach(x=>{x.hidden=true;});}
 });
 document.addEventListener('change',ev=>{
   const t=ev.target;
   if(t.id==='f-role'||t.id==='f-status'||t.id==='f-exp'){S.filters[t.id.slice(2)]=t.value;$('#tbody').innerHTML=rowsHTML();}
   else if(t.id==='f-missing'){S.filters.missing=t.checked;$('#tbody').innerHTML=rowsHTML();}
-  else if(t.matches('input[type=file][data-slot]')){
+  else if(t.closest&&t.closest('#fCards .card[data-form]')) updForm(t.closest('.card[data-form]'));
+  else if(t.matches('input[type=file][data-slot],input[type=file][data-oslot]')){
     const f=t.files&&t.files[0];if(!f) return;
-    if(!/^image\//.test(f.type)){pToast('צריך לבחור תמונה');return;}
-    syncDraft();
-    const rd=new FileReader();rd.onload=()=>shrink(rd.result,url=>{if(!url){pToast('לא הצלחנו לקרוא את התמונה');return;}S.phone.files[t.dataset.slot]=url;renderPhone();});rd.readAsDataURL(f);
+    const office=t.hasAttribute('data-oslot'),slot=office?t.dataset.oslot:t.dataset.slot;
+    const say=m=>office?toast(m,'','info'):pToast(m);
+    const put=url=>{
+      if(office){if(!S.up) return;S.up.files[slot]=url;const b=$('#upTiles');if(b) b.innerHTML=upTilesHTML();const er=$('#up-err');if(er) er.hidden=true;}
+      else {S.phone.files[slot]=url;renderPhone();}
+    };
+    if(!office) syncDraft();
+    const isPdf=f.type==='application/pdf'||/\.pdf$/i.test(f.name);
+    if(isPdf&&(office||(ITEMS[S.phone.step]||{}).pdf)){put(pdfThumb(f.name));return;}
+    if(!/^image\//.test(f.type)){say(office?'צריך לבחור תמונה או קובץ PDF':'צריך לבחור תמונה');t.value='';return;}
+    const rd=new FileReader();rd.onload=()=>shrink(rd.result,url=>{if(!url){say('לא הצלחנו לקרוא את הקובץ');return;}put(url);});rd.readAsDataURL(f);
   }
 });
 
