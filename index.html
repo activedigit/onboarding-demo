@@ -1223,6 +1223,8 @@ function saveExp(form){
 }
 // export
 function exportCsv(){
+  let framed=true;try{framed=window.self!==window.top}catch(_){}
+  if(framed){toast('בתצוגה המוטמעת ההורדה כבויה','בקישור הציבורי של הדמו הטבלה יורדת כקובץ Excel','info');return;}
   const list=filtered(),q=c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"';
   const head=['שם','טלפון','ת.ז','תפקיד','סטטוס','התקדמות','תוקף קרוב','מסמך','פעילות אחרונה'];
   const rows=list.map(e=>{const st=status(e),pr=progress(e),ex=nearestExp(e);
